@@ -1,4 +1,4 @@
-
+#POKEMON MASTER JOURNEY
 def enter():
     with open('Poketab.txt', 'a') as file:
         pokemon=input("Pokemon Name: ").lower()
