@@ -1,0 +1,57 @@
+
+def enter():
+    with open('Poketab.txt', 'a') as file:
+        pokemon=input("Pokemon Name: ").lower()
+        types=input("Pokemon Type: ").lower()
+        file.write(pokemon + "-" + types + "\n")
+        print("Your Pokemon has been entered!")
+
+
+def check():
+    with open('Poketab.txt', 'r') as file:
+        read_pokemon = file.read()
+        return (read_pokemon)
+
+def poketype(pokemon_type):
+    count=0
+    with open('Poketab.txt', 'r') as file:
+        for line in file:
+            line=line.strip()
+            newline=line.split('-')
+            for pokemons in newline:
+                if pokemon_type == pokemons:
+                    count += 1
+    return(count)
+
+def close_tab():
+    print("See you next time, Trainer!")
+    exit()
+
+name=input("What's your name trainer?\n")
+print(f'Hey, Trainer {name}! What you want me to do?')
+
+print("Choose:")
+print("1. Poke Ball jao! catch my new pokemon.")
+print("2. Poke Tab show my pokemons.")
+print("3. Check the maximum number of Pokemon types.")
+print("4. Close my PokeTab!!!")
+
+while True:
+    choice = int(input("Trainer Choose the options: "))
+
+    if choice == 1:
+        enter()
+
+    elif choice == 2:
+        read=check()
+        print(read)
+
+    elif choice == 3:
+        pokemon_type = input("Select Pokemon Type to check: ").lower()
+        numbers=poketype(pokemon_type)
+        print(numbers)
+
+    elif choice == 4:
+        close_tab()
+    else:
+        print("Wrong command!!! Please choose between 1 and 4")
